@@ -12,18 +12,16 @@ def get_ngram(tweets):
     mfile = requests.get("https://github.com/WilliamZhuGitHub/Twitter_Bad_Actor_Detector/blob/main/twitter_analysis/twitter_analysis/models/ngram.joblib")
     model = load(mfile.content)
     vect = cloudpickle.load("https://github.com/WilliamZhuGitHub/Twitter_Bad_Actor_Detector/blob/main/twitter_analysis/twitter_analysis/models/tf.pk")
-    tally = 0
-    for tweet in t:
-        temp = vect.transform(tweet)
-        tally += model.predict(temp)
-    return tally / t.shape[0]
+    t['input_text'] = pd.apply(lambda x = vect.transform(x['text'])\
+    t['prediction'] = pd.apply(lambda y = model.predict(x['input_text'])
+    return t['prediction'].value_counts()['bad_actor'] / t.count()['prediction']
 
 def get_sentiment(tweets):
     t = pd.json_normalize(tweets, record_path='data')
     model = keras.models.load_model(requests.get("https://github.com/WilliamZhuGitHub/Twitter_Bad_Actor_Detector/blob/main/twitter_analysis/twitter_analysis/models/sentiment.keras", allow_redirects=True))
     token = cloudpickle.load("https://github.com/WilliamZhuGitHub/Twitter_Bad_Actor_Detector/blob/main/twitter_analysis/twitter_analysis/models/token.pk")
     tally = 0
-    for tweet in t:
+    for tweet in t['text']:
         temp = sequence.pad_sequences(token.texts_to_sequences(tweet), maxlen=50)
         tally += model.predict(temp)
     return tally / t.shape[0]
