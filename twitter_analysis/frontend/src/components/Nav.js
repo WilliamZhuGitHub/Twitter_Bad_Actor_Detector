@@ -9,7 +9,7 @@ export default class Nav extends Component {
         return(
             <div>
                <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{backgroundColor: "#3297a8"}}>
-                  <a className="navbar-brand" href=""> 
+                  <a className="navbar-brand" href="/"> 
             <img src ="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg" height = '40' width = '60'/>
       Twitter Analysis
 </a>
@@ -24,13 +24,10 @@ export default class Nav extends Component {
         <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/join">Search</a>
+        <a className="nav-link" href="/search">Search</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/about">About Us</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="/create">Test</a> 
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/api/get-twitter-user">Tech Stack</a>

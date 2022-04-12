@@ -6,7 +6,7 @@ export default class AboutUs extends Component {
     }
 
     render(){
-        return (<div style = {{marginTop : '200px'}}>
+        return (<div style = {{marginTop : '650px', overflow: 'auto'}}>
       <section class="jumbotron text-center" >
         <div class="container">
           <h1 class="jumbotron-heading">Album example</h1>
@@ -18,8 +18,8 @@ export default class AboutUs extends Component {
         </div>
       </section>
 
-      <div class="album py-5 bg-light">
-        <div class="container">
+      <div class="album py-5 bg-light ">
+        <div class="container" >
 
           <div class="row">
             
@@ -50,6 +50,7 @@ export default class AboutUs extends Component {
                 </div>
               </div>
             </div>
+
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
               <img src = 'https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg' ></img>
@@ -62,6 +63,46 @@ export default class AboutUs extends Component {
                 </div>
               </div>
             </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+              <img src = 'https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg' ></img>
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+              <img src = 'https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg' ></img>
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+              <img src = 'https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg' ></img>
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>

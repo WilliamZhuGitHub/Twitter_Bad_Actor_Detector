@@ -8,6 +8,8 @@ urlpatterns = [
     path('join', index),
     path('create', index),
     path('about', index),
+    path('search', index),
+    path('user/<str:userName>', index),
 
     path('room/<str:roomCode>', index),
  ]
