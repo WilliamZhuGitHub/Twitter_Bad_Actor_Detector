@@ -24,7 +24,7 @@ export default class UserSearch extends Component {
           <TextField
             error={this.state.error}
             label="Enter a twitter handle"
-            placeholder="Enter a twitter handle"
+            placeholder="eg. BarackObama"
             value={this.state.userName}
             helperText={this.state.error}
             variant="outlined"
@@ -59,17 +59,10 @@ export default class UserSearch extends Component {
       }),
     };
     fetch("/api/get-twitter-user", requestOptions)
-        //  .then((response) => response.json())
-        //  .then((user) => {
-        //     console.log(user.created_at)
-        //     console.log(user.description)
-        //     console.log(user.username)
-        //  });
       .then((response) => {
         if (response.ok) {
           this.props.history.push(`user/${this.state.userName}`);
-          //this.props.history.push('room/529582');
-          console.log(response.json())
+           console.log(response.json())
           } else {
           this.setState({ error: "User Not Found." });
         }
