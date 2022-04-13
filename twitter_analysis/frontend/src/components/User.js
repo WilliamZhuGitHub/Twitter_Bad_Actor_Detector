@@ -19,6 +19,22 @@ export default class User extends Component {
         };
         this.userName = this.props.match.params.userName;
         this.getUserDetails()
+     }
+
+    getUserTweets(){ 
+         const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              code: this.state.id
+            }),
+          };
+        fetch("/api/get-user-tweets", requestOptions)
+         .then((response) => response.json())
+         .then((user) => {
+               //console.log("Code" + this.state.id)
+                console.log(user)
+          });
     }
 
     getUserDetails(){
@@ -44,9 +60,9 @@ export default class User extends Component {
             followingCount: user.public_metrics.following_count,
             tweet_count: user.public_metrics.tweet_count,
             listedCount: user.public_metrics.listed_count
-            });
+            }, () => this.getUserTweets());
          });
-        };
+         };
     
     render(){
         return (<div style = {{ overflow: 'auto', backgroundColor: '#eee'}}>

@@ -7,6 +7,7 @@ urlpatterns = [
     path('', index),
     path('about', index),
     path('search', index),
+    path('tech', index),
     path('user/<str:userName>', index),
 
   ]

@@ -7,20 +7,14 @@ from .models import Room
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import requests
+import json
 
 # Create your views here.
 
-class RoomView(generics.ListAPIView):
-    queryset = Room.objects.all()
-    serializer_class = RoomSerializer
-
-
 class GetUserTweets(APIView):
-    lookup_url_kwarg = 'code'
     def post(self, request, *args, **kwargs):
-        code = request.data.get(self.lookup_url_kwarg)
-        url = "https://api.twitter.com/2/users/1108050829393707008/tweets?max_results=50"
-
+        code = request.data.get('code')
+        url = "https://api.twitter.com/2/users/"+str(code)+"/tweets?max_results=5"
         payload={}
         headers = {
         'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAACbLbAEAAAAARFEcgg5GFIacE2VO%2FYixvNshthA%3DuJs2SELVtnO7WFJJXCn2KxOOYJ7AQL95ihtOuz9HIr6FeOZz0C',
@@ -28,10 +22,9 @@ class GetUserTweets(APIView):
         }
 
         response = requests.request("GET", url, headers=headers, data=payload)
-        #print(response.text)
-        resposneJson = response.json()
-        return Response(responseJson, status=status.HTTP_200_OK)
-
+        responseJson = response.json()
+        return Response(responseJson['data'], status=status.HTTP_200_OK)
+ 
 class GetTwitterUser(APIView):
     lookup_url_kwarg = 'code'
     def post(self, request,  *args, **kwargs):
@@ -50,6 +43,39 @@ class GetTwitterUser(APIView):
         #return Response(response.json(), status=status.HTTP_200_OK)
         responseJson = response.json()
         return Response(responseJson['data'][0], status=status.HTTP_200_OK)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class RoomView(generics.ListAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
 
 
 class GetRoom(APIView):

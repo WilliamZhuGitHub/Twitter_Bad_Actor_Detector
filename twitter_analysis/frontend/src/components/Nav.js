@@ -30,7 +30,7 @@ export default class Nav extends Component {
         <a className="nav-link" href="/about">About Us</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/api/get-twitter-user">Tech Stack</a>
+        <a className="nav-link" href="/tech">Tech Stack</a>
       </li>
       
     
