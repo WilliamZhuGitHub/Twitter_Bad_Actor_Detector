@@ -12,9 +12,13 @@ def get_ngram(tweets):
     mfile = requests.get("https://github.com/WilliamZhuGitHub/Twitter_Bad_Actor_Detector/blob/main/twitter_analysis/twitter_analysis/models/ngram.joblib")
     model = load(mfile.content)
     vect = cloudpickle.load("https://github.com/WilliamZhuGitHub/Twitter_Bad_Actor_Detector/blob/main/twitter_analysis/twitter_analysis/models/tf.pk")
-    t['input_text'] = pd.apply(lambda x = vect.transform(x['text']))
-    t['prediction'] = pd.apply(lambda y = model.predict(x['input_text']))
-    return t['prediction'].value_counts()['bad_actor'] / t.count()['prediction']
+    tally = 0
+    for tweet in t['text']:
+        temp = vect.transform(x)
+        if model.predict(temp) == 'bad_actor':
+            tally += 1
+    return tally / t.shape[0]
+    
 
 def get_sentiment(tweets):
     t = pd.json_normalize(tweets, record_path='data')
