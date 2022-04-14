@@ -33,7 +33,22 @@ export default class User extends Component {
          .then((response) => response.json())
          .then((user) => {
                //console.log("Code" + this.state.id)
-                console.log(user)
+                user = JSON.stringify(user)
+                //console.log(user)
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      code: user
+                    }),
+                  };
+                fetch("/api/get-sentiment", requestOptions)
+                .then((response) => response.json())
+                .then((data) => {
+                    //console.log("reached")
+                    console.log(data)
+                })
+
           });
     }
 
@@ -65,7 +80,7 @@ export default class User extends Component {
          };
     
     render(){
-        return (<div style = {{ overflow: 'auto', backgroundColor: '#eee'}}>
+        return (<div style = {{marginTop: '100px', overflow: 'auto', backgroundColor: '#eee'}}>
                 <section class ="background-color: #eee">
                 <div class="container py-5">
                     <div class="row">
@@ -75,7 +90,28 @@ export default class User extends Component {
                         <img src={this.state.twitterPFP}/>  
 
                              <h5 class="my-3">{this.userName}</h5>
-                            <p class="text-muted mb-4">Description: {this.state.description}</p>
+                            <p class="text-muted mb-4"> {this.state.description}</p>
+                            
+                    
+                            <div class="row">
+                            <div class="col">
+                                <p class="mb">NGram: </p>
+                            </div>
+                            <div class="col">
+                                <p class="text-muted mb-0">XXXX</p>
+                            </div>
+                            </div>
+
+                            <div class="row">
+                            <div class="col">
+                                <p class="mb">Sentiment: </p>
+                            </div>
+                            <div class="col">
+                                <p class="text-muted mb-0">XXXX</p>
+                            </div>
+                            </div>
+
+
                         </div>
                         </div>
                         
